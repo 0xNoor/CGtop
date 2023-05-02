@@ -7,6 +7,8 @@ except:
 
 num_cores = psutil.cpu_count(logical=True);
 
+
+
 def cpu_usage():
 	cpu_percentage = psutil.cpu_percent();
 	print(f"CPU Usage is : {cpu_percentage}%");
@@ -16,6 +18,19 @@ def per_cpu_usage():
 	for i in range(num_cores):
 		print(f"Core ID {i+1} usage is {per_cpu_percentage[i]}");
 
+
+
+BANNER =(
+" ██████╗ ██████╗████████╗ ██████╗ ██████╗ ",
+"██╔════╝██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗",
+"██║     ██║  ███╗  ██║   ██║   ██║██████╔╝",
+"██║     ██║   ██║  ██║   ██║   ██║██╔═══╝ ",
+"╚██████╗╚██████╔╝  ██║   ╚██████╔╝██║     ",
+" ╚═════╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝     "
+)
+for i in BANNER:
+	print(i);
+time.sleep(2);
 while(1):
 	os.system("clear");
 	cpu_usage();
