@@ -42,6 +42,8 @@ while(1):
 		print(i);
 	print(nvidia_gpu_name(0))
 	print(nvidia_gpu_temp(GPU_ID))
+	print(nvidia_gpu_core_clock(GPU_ID))
+	print(nvidia_gpu_mem_clock(GPU_ID))
 	cpu_usage();
 	per_cpu_usage();
 	time.sleep(1);
