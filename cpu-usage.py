@@ -1,9 +1,13 @@
 import time
 import os
+from nvidia_gpu import *
 try:
 	import psutil;
 except:
 	print("psutil not installed");
+
+
+
 
 num_cores = psutil.cpu_count(logical=True);
 
@@ -18,8 +22,6 @@ def per_cpu_usage():
 	for i in range(num_cores):
 		print(f"Core ID {i+1} usage is {per_cpu_percentage[i]}");
 
-
-
 BANNER =(
 " ██████╗ ██████╗████████╗ ██████╗ ██████╗ ",
 "██╔════╝██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗",
@@ -28,11 +30,18 @@ BANNER =(
 "╚██████╗╚██████╔╝  ██║   ╚██████╔╝██║     ",
 " ╚═════╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝     "
 )
-for i in BANNER:
-	print(i);
-time.sleep(2);
+
+
+
+
+
+
 while(1):
 	os.system("clear");
+	for i in BANNER:
+		print(i);
+	print(nvidia_gpu_name(0))
+	print(nvidia_gpu_temp(GPU_ID))
 	cpu_usage();
 	per_cpu_usage();
 	time.sleep(1);
