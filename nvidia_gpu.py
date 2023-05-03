@@ -1,13 +1,7 @@
 from pynvml import *
 
-nvmlInit();
-
-total_nvidia_gpu = nvmlDeviceGetCount()
-
-for i in range(total_nvidia_gpu):
-    GPU_ID = nvmlDeviceGetHandleByIndex(i)
-
-
+def total_nvidia_gpu():
+    return nvmlDeviceGetCount()
 
 def nvidia_gpu_name(GPU_ID):
     return nvmlDeviceGetName(nvmlDeviceGetHandleByIndex(GPU_ID))
