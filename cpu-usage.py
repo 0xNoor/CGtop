@@ -1,5 +1,6 @@
 import time
 import os
+import subprocess
 from nvidia_gpu import *
 try:
 	import psutil;
@@ -35,15 +36,39 @@ BANNER =(
 
 
 
+gpu_check = subprocess.check_output("lspci -k | grep -A 2 -E '(VGA|3D)' | grep 'Kernel driver' | awk '{print $5}'", shell=True)
+gpu_check = gpu_check.decode("utf-8").strip().split("\n")
+
+
+
+'''
+gpu_check = subprocess.check_output("lspci -k | grep -A 2 -E '(VGA|3D)'", shell=True)
+gpu_check = gpu_check.decode("utf-8").strip().split("\n")
+
+print(len(gpu_check))
+
+for i in range(len(gpu_check)):
+    if "Kernel driver in use" in gpu_check[i]:
+        gpu_driver = gpu_check[i]
+        print(len(gpu_driver))
+'''
+
+
+
+
 
 while(1):
 	os.system("clear");
+
 	for i in BANNER:
 		print(i);
-	print(nvidia_gpu_name(0))
-	print(nvidia_gpu_temp(GPU_ID))
-	print(nvidia_gpu_core_clock(GPU_ID))
-	print(nvidia_gpu_mem_clock(GPU_ID))
+	if "nvidia" in gpu_check:
+		print(nvidia_gpu_name(0))
+		print(nvidia_gpu_temp(GPU_ID))
+		print(nvidia_gpu_core_clock(GPU_ID))
+		print(nvidia_gpu_mem_clock(GPU_ID))
+	else:
+		pass
 	cpu_usage();
 	per_cpu_usage();
 	time.sleep(1);
