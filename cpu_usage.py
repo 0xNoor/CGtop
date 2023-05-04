@@ -17,6 +17,10 @@ def per_cpu_usage():
 	for i in range(num_cores):
 		print(f"Core ID {i+1} usage is {per_cpu_percentage[i]}");
 
+def per_cpu_freq():
+	per_cpu_frequency = psutil.cpu_freq();
+	print(f"Core ID Frequency is {per_cpu_frequency}")
+
 
 
 
