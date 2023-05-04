@@ -1,5 +1,7 @@
-from pynvml import *
-
+try:
+    from pynvml import *
+except:
+    print("pynvml not installed")
 def total_nvidia_gpu():
     return nvmlDeviceGetCount()
 
