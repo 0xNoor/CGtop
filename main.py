@@ -44,6 +44,7 @@ while(1):
 		radeon_out = subprocess.check_output("radeontop -l 1 -d -", shell=True)
 		output = radeon_out.decode()
 		print(radeon_gpu_usage(output))
+		print(radeon_gpu_mem_freq(output))
 		time.sleep(1)
 	else:
 		pass

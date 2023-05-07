@@ -14,6 +14,21 @@ def radeon_gpu_vram_usage(output):
 def radeon_gpu_vram_mem(output):
     vram_mem = re.search(r'vram \d+\.\d+% (\d+\.\d+)mb', output).group(1)
 
+def radeon_mem_clock(output):
+    mem_clock_percent = re.search(r"mclk.+?([0-9.]+)", output).group(1)
+    return mem_clock_percent
+
+def radeon_shader_clock(output):
+    shader_clock = re.search(r"sclk.+?([0-9.]+)", output).group(1)
+    return shader_clock
+
+def radeon_gpu_mem_freq(output):
+    mem_clock_freq = re.search(r'mclk \d+\.\d+% (\d+\.\d+)ghz', output).group(1)
+    return mem_clock_freq
+
+def radeon_gpu_shader_freq(output):
+    shader_clock_freq = re.search(r'sclk \d+\.\d+% (\d+\.\d+)ghz', output).group(1)
+    return shader_clock_freq
 
 
 '''
