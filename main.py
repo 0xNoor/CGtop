@@ -40,7 +40,10 @@ while(1):
 		print(nvidia_gpu_temp(GPU_ID))
 		print(nvidia_gpu_core_clock(GPU_ID))
 		print(nvidia_gpu_mem_clock(GPU_ID))
-	elif "amdgpu" in gpu_check:
+		time.sleep(1)
+	else:
+		pass
+	if "amdgpu" in gpu_check:
 		radeon_out = subprocess.check_output("radeontop -l 1 -d -", shell=True)
 		output = radeon_out.decode()
 		print(radeon_gpu_usage(output))

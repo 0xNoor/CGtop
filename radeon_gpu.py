@@ -10,9 +10,11 @@ def radeon_gpu_usage(output):
 
 def radeon_gpu_vram_usage(output):
     vram = re.search(r"vram.+?([0-9.]+)", output).group(1)
+    return vram
 
 def radeon_gpu_vram_mem(output):
     vram_mem = re.search(r'vram \d+\.\d+% (\d+\.\d+)mb', output).group(1)
+    return vram_mem
 
 def radeon_mem_clock(output):
     mem_clock_percent = re.search(r"mclk.+?([0-9.]+)", output).group(1)
