@@ -1,6 +1,6 @@
 from nvidia_gpu import *
 from cpu_usage import *
-from radeon_gpu import *
+from radeon_gpu2 import *
 
 BANNER =(
 " ██████╗ ██████╗████████╗ ██████╗ ██████╗ ",
@@ -44,11 +44,17 @@ while(1):
 	else:
 		pass
 	if "amdgpu" in gpu_check:
-		radeon_out = subprocess.check_output("radeontop -l 1 -d -", shell=True)
+		print(amd_gpu_vram_usage(0))
+		print(amd_gpu_core_clock(0))
+		print(amd_gpu_mem_clock(0))
+
+
+		"""radeon_out = subprocess.check_output("radeontop -l 1 -d -", shell=True)
 		output = radeon_out.decode()
 		print(radeon_gpu_usage(output))
 		print(radeon_gpu_mem_freq(output))
-		time.sleep(1)
+		time.sleep(1)"""
 	else:
 		pass
+	time.sleep(1)
 
