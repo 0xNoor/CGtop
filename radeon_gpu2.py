@@ -18,4 +18,11 @@ def amd_gpu_vram_usage(ID):
     vram_usage = total_amd_gpu(ID).query_vram_usage()
     return vram_usage
 
+def amd_gpu_gtt(ID):
+    gtt = total_amd_gpu(ID).query_gtt_usage()
+    return gtt
+
+def amd_gpu_temp(ID):
+    temp = total_amd_gpu(ID).query_temperature()
+    return temp
 
