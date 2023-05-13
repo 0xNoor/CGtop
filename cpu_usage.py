@@ -5,6 +5,10 @@ try:
 	import psutil;
 except:
 	print("psutil not installed");
+	import subprocess
+	subprocess.call(['pip', 'install', 'psutil' ])
+finally:
+	import psutil;
 
 num_cores = psutil.cpu_count(logical=True);
 

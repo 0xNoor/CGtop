@@ -26,3 +26,18 @@ def amd_gpu_temp(ID):
     temp = total_amd_gpu(ID).query_temperature()
     return temp
 
+def amd_gpu_load(ID):
+    load = total_amd_gpu(ID).query_load()
+    return load
+
+def amd_gpu_power(ID):
+    power = total_amd_gpu(ID).query_power
+    return power
+
+def amd_gpu_nbrig_vol(ID):
+    nbrig = total_amd_gpu(ID).query_northbridge_voltage()
+    return nbrig
+
+def amd_gpu_vol(ID):
+    gvol = total_amd_gpu(ID).query_graphics_voltage()
+    return gvol
