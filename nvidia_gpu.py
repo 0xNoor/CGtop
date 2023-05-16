@@ -2,6 +2,13 @@ try:
     from pynvml import *
 except:
     print("pynvml not installed")
+    print("Trying to install Pynvml")
+    import subprocess
+    subprocess.call(['pip', 'install', 'pynvml' ])
+finally:
+    from pynvml import *
+
+
 def total_nvidia_gpu():
     return nvmlDeviceGetCount()
 

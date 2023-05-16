@@ -5,6 +5,7 @@ try:
 	import psutil;
 except:
 	print("psutil not installed");
+	print("Trying to install psutil")
 	import subprocess
 	subprocess.call(['pip', 'install', 'psutil' ])
 finally:
