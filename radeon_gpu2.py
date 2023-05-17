@@ -2,6 +2,11 @@ try:
     from pyamdgpuinfo import *
 except:
     print("pyamdgpuinfo not installed")
+    print("Trying to install pyamdgpuinfo")
+    import subprocess
+    subprocess.call(['pip', 'install', 'pyamdgpuinfo' ])
+finally:
+    from pyamdgpuinfo import *
 
 def total_amd_gpu(ID):
     return get_gpu(ID)
