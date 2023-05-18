@@ -1,6 +1,7 @@
 from nvidia_gpu import *
 from cpu_usage import *
 from radeon_gpu2 import *
+from gpu_check import *
 
 BANNER =(
 " ██████╗ ██████╗████████╗ ██████╗ ██████╗ ",
@@ -12,14 +13,11 @@ BANNER =(
 )
 
 
-gpu_check = subprocess.check_output("lspci -k | grep -A 2 -E '(VGA|3D)' | grep 'use' | awk '{print $NF}'", shell=True)
-gpu_check = gpu_check.decode("utf-8").strip().split("\n")
-
-if "nvidia" in gpu_check:
+if "nvidia" in gpu_info:
 	nvmlInit();
 	for i in range(total_nvidia_gpu()):
 		GPU_ID = nvmlDeviceGetHandleByIndex(i)
-elif "amdgpu" in gpu_check:
+elif "amdgpu" in gpu_info:
 	pass
 else:
 	pass
@@ -35,7 +33,7 @@ while(1):
 	#time.sleep(1);
 
 
-	if "nvidia" in gpu_check:
+	if "nvidia" in gpu_info:
 		print(nvidia_gpu_name(0))
 		print(nvidia_gpu_temp(GPU_ID))
 		print(nvidia_gpu_core_clock(GPU_ID))
@@ -43,7 +41,7 @@ while(1):
 		time.sleep(1)
 	else:
 		pass
-	if "amdgpu" in gpu_check:
+	if "amdgpu" in gpu_info:
 		print(amd_gpu_vram_usage(0))
 		print(amd_gpu_core_clock(0))
 		print(amd_gpu_mem_clock(0))
