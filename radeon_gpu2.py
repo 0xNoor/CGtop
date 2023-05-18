@@ -1,3 +1,4 @@
+from main import gpu_check
 try:
     from pyamdgpuinfo import *
 except:
@@ -6,7 +7,8 @@ except:
     import subprocess
     subprocess.call(['pip', 'install', 'pyamdgpuinfo' ])
 finally:
-    from pyamdgpuinfo import *
+    if "amd" in gpu_check:
+        from pyamdgpuinfo import *
 
 def total_amd_gpu(ID):
     return get_gpu(ID)

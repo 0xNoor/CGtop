@@ -1,12 +1,16 @@
+from gpu_check import *
 try:
-    from pynvml import *
+    if "nvidia" in gpu_info:
+        from pynvml import *
 except:
     print("pynvml not installed")
-    print("Trying to install Pynvml")
-    import subprocess
-    subprocess.call(['pip', 'install', 'pynvml' ])
+    if "nvidia" in gpu_info:
+        print("Trying to install Pynvml")
+        import subprocess
+        subprocess.call(['pip', 'install', 'pynvml' ])
 finally:
-    from pynvml import *
+    if "nvidia" in gpu_info:    
+        from pynvml import *
 
 
 def total_nvidia_gpu():
