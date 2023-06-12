@@ -4,6 +4,7 @@ from radeon_gpu2 import *
 from gpu_check import *
 from rich import print as rprint
 from rich.console import Console
+from alive_progress import alive_bar
 
 console = Console()
 
@@ -33,7 +34,7 @@ while(1):
 	os.system("clear");
 	for i in range(len(BANNER)):
 		console.print(f"[green]{BANNER[i]}", justify="center")
-	cpu_usage();
+	print(f"CPU Usage is : {cpu_usage()}%");
 	per_cpu_usage();
 	per_cpu_freq();
 	#time.sleep(1);

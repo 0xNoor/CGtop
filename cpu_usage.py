@@ -15,7 +15,7 @@ num_cores = psutil.cpu_count(logical=True);
 
 def cpu_usage():
 	cpu_percentage = psutil.cpu_percent();
-	print(f"CPU Usage is : {cpu_percentage}%");
+	return cpu_percentage
 
 def per_cpu_usage():
 	per_cpu_percentage = psutil.cpu_percent(percpu=True);
